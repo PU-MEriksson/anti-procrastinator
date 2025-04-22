@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const OpenAI = require('openai');
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const OpenAI = require("openai");
+require("dotenv").config();
 
 const app = express();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -10,16 +10,15 @@ app.use(express.json());
 app.use(cors());
 
 // Endpoint with AI prompt
-app.post('/api/generate-plan', async (req, res) => {
-    const { uppgift, tidpunkt, ovrigInfo, detaljniva } = req.body;
+app.post("/api/generate-plan", async (req, res) => {
+  const { uppgift, tidpunkt, ovrigInfo, detaljniva } = req.body;
 
-   
-    const prompt = `
+  const prompt = `
 Du är en hjälpsam assistent som specialiserat dig på att hjälpa personer med exekutiva svårigheter att bryta ner uppgifter och motverka prokrastinering.
 
 Användaren har skrivit in följande:
 - Uppgift: ${task}
-- När användaren vill börja: ${when || "Ingen tidpunkt angiven".}
+- När användaren vill börja: ${when || "Ingen tidpunkt angiven"}
 - Övrig information: ${moreInfo || "Ingen ytterligare info."}
 - Önskad detaljnivå på nedbrytningen: ${detailslevel}
 
@@ -63,19 +62,19 @@ Detaljerad handlingsplan:
 osv.
 `;
 
-    try {
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: prompt }],
-            model: 'gpt-3.5-turbo',
-        });
+  try {
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: prompt }],
+      model: "gpt-3.5-turbo",
+    });
 
-        res.json({ response: completion.choices[0].message.content });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Fel vid generering av plan.' });
-    }
+    res.json({ response: completion.choices[0].message.content });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Fel vid generering av plan." });
+  }
 });
 
 app.listen(3001, () => {
-    console.log('Backend körs på port 3001');
+  console.log("Backend körs på port 3001");
 });
