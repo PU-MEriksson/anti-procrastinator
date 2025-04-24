@@ -11,7 +11,8 @@ app.use(cors());
 
 // Endpoint with AI prompt
 app.post("/api/generate-plan", async (req, res) => {
-  const { uppgift, tidpunkt, ovrigInfo, detaljniva } = req.body;
+  const { task, when, moreInfo, detailslevel } = req.body;
+  // Changed from uppgift, tidpunkt, ovrigInfo, detaljniva to match frontend variables
 
   const prompt = `
 Du är en hjälpsam assistent som specialiserat dig på att hjälpa personer med exekutiva svårigheter att bryta ner uppgifter och motverka prokrastinering.
