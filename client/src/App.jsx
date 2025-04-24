@@ -5,7 +5,7 @@ function App() {
   const [response, setResponse] = useState("");
 
   const handleSubmit = async () => {
-    const res = await fetch("http://localhost:3001/api/generate", {
+    const res = await fetch("http://localhost:3001/api/generate-plan", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
