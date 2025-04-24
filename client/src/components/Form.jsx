@@ -1,107 +1,72 @@
 import { useState } from 'react';
+import TextInput from './TextInput';
+import RadioGroup from './RadioGroup';
+import Button from './Button';
 
-function Form({ onSubmit, isLoading }) {
-    const [formData, setFormData] = useState({
-      task: '',
-      when: '',
-      moreInfo: '',
-      detailslevel: 'Ett första steg'
-    });
+function Form({ onSubmit, isLoading = false}) {
+    const [task, setTask] = useState('');
+    const [when, setWhen] = useState('');
+    const [moreInfo, setMoreInfo] = useState('');
+    const [detailslevel, setDetailslevel] = useState('Ett första steg');
   
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData(prev => ({ ...prev, [name]: value }));
-    };
+    // const handleChange = (e) => {
+    //   const { name, value } = e.target;
+    //   setFormData(prev => ({ ...prev, [name]: value }));
+    // };
   
     const handleSubmit = (e) => {
-      e.preventDefault();
-      onSubmit(formData);
-    };
+        e.preventDefault();
+        onSubmit({ task, when, moreInfo, detailslevel });
+      };
+
+      const detailOptions = [
+        { value: 'Ett första steg', label: 'Ett första steg' },
+        { value: 'Flera steg', label: 'Flera steg' },
+        { value: 'I ännu fler detaljerade steg', label: 'I ännu fler detaljerade steg' }
+      ];
 
   return (
     <div className="form-container">
-    <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
-        <label htmlFor="task">Vad behöver du göra?</label>
-        <input
-            type="text"
+            <TextInput
             id="task"
-            name="task"
-            value={formData.task}
-            onChange={handleChange}
-            required
+            label="Vad behöver du göra?"
+            value={task}
+            onChange={setTask}
             placeholder="Ex: Skriva uppsats, städa köket, planera projekt..."
-        />
-        </div>
+            required={true}
+            />
 
-        <div className="form-group">
-          <label htmlFor="when">När vill du börja?</label>
-          <input
-            type="text"
+            <TextInput
             id="when"
-            name="when"
-            value={formData.when}
-            onChange={handleChange}
+            label="När vill du börja?"
+            value={when}
+            onChange={setWhen}
             placeholder="Ex: Nu, när jag kommer hem, efter lunch..."
-          />
-        </div>
+            />
 
-        <div className="form-group">
-          <label htmlFor="moreInfo">Är det något du vill tillägga?</label>
-          <input
+            <TextInput
             id="moreInfo"
-            name="moreInfo"
-            value={formData.moreInfo}
-            onChange={handleChange}
+            label="Övrig information (valfritt)"
+            value={moreInfo}
+            onChange={setMoreInfo}
             placeholder="Specifika utmaningar, tidsbegränsningar..."
-          />
-        </div>
+            />
 
-        <div className="form-group">
-          <label>Hur detaljerad nedbrytning önskar du?</label>
-          <div className="radio-group">
-            <label>
-              <input
-                type="radio"
-                name="detailslevel"
-                value="Ett första steg"
-                checked={formData.detailslevel === "Ett första steg"}
-                onChange={handleChange}
-              />
-              Ett första steg
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="detailslevel"
-                value="Flera steg"
-                checked={formData.detailslevel === "Flera steg"}
-                onChange={handleChange}
-              />
-              Flera steg
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="detailslevel"
-                value="I ännu fler detaljerade steg"
-                checked={formData.detailslevel === "I ännu fler detaljerade steg"}
-                onChange={handleChange}
-              />
-              I ännu fler detaljerade steg
-            </label>
-          </div>
-        </div>
+            <RadioGroup
+            label="Hur detaljerad nedbrytning önskar du?"
+            name="detailslevel"
+            options={detailOptions}
+            selectedValue={detailslevel}
+            onChange={setDetailslevel}
+            />
 
-        <button 
-          type="submit" 
-          className="submit-button"
-          disabled={isLoading}
-        >
-          {isLoading ? 'Genererar plan...' : 'Generera plan'}
-        </button>
-    </form>
+            <Button type="submit" disabled={isLoading}>
+            {isLoading ? 'Genererar plan...' : 'Generera plan'}
+            </Button>
+
+        </form>
     </div>
   );
 }
