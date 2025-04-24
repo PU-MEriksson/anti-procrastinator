@@ -1,21 +1,30 @@
 import { useState } from 'react';
 
-function Form({ onSubmit }) {
-  const [task, setTask] = useState('');
-  const [when, setWhen] = useState('');
-  const [moreInfo, setMoreInfo] = useState('');
-  const [detailslevel, setDetailslevel] = useState('Ett första steg');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ task, when, moreInfo, detailslevel });
-  };
+function Form({ onSubmit, isLoading }) {
+    const [formData, setFormData] = useState({
+      task: '',
+      when: '',
+      moreInfo: '',
+      detailslevel: 'Ett första steg'
+    });
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({ ...prev, [name]: value }));
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onSubmit(formData);
+    };
 
   return (
+    <div className="form-container">
     <form onSubmit={handleSubmit}>
       {}
       <button type="submit">Generera plan</button>
     </form>
+    </div>
   );
 }
 
