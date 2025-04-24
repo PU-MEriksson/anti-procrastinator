@@ -49,7 +49,7 @@ function Form({ onSubmit, isLoading }) {
 
         <div className="form-group">
           <label htmlFor="moreInfo">Är det något du vill tillägga?</label>
-          <textarea
+          <input
             id="moreInfo"
             name="moreInfo"
             value={formData.moreInfo}
