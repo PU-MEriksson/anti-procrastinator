@@ -1,5 +1,3 @@
-//Move this to a ResultPage later
-// Add AI-response to the result
 // Add send logic to get the edit response
 // Add loading state
 // Add error handling
