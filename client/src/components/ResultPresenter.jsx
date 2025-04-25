@@ -4,19 +4,17 @@
 
 import React, { useState } from "react";
 import Result from "./Result";
-import TextInput from "./TextInput";
-import Button from "./Button";
 import { Link } from "react-router-dom";
 
-function ResultContainer({ response, onEdit, onBack }) {
-  const [editText, setEditText] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+function ResultPresenter({ response, onEdit, onBack }) {
+  // const [editText, setEditText] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onEdit(editText);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   onEdit(editText);
+  // };
   return (
     <main>
       <Result response={response} />
@@ -42,4 +40,4 @@ function ResultContainer({ response, onEdit, onBack }) {
     </main>
   );
 }
-export default ResultContainer;
+export default ResultPresenter;

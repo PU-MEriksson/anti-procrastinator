@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import ResultContainer from "../components/ResultContainer";
+import ResultPresenter from "../components/ResultPresenter";
 
 export default function ResultPage() {
   const { state } = useLocation();
@@ -8,6 +8,5 @@ export default function ResultPage() {
   const response = state?.response || "Ingen plan kunde genereras.";
   const handleBack = () => navigate("/");
 
-  return <ResultContainer response={response} onBack={handleBack} />;
-  <button onClick={goBackToForm}>Gå tillbaka</button>;
+  return <ResultPresenter response={response} onBack={handleBack} />;
 }
