@@ -32,7 +32,7 @@ Om användaren valt "Ett första steg":
 
 Format:
 Uppgift:
-Pivot-point:
+När:
 Ditt första steg (max 5 min):
 
 Om användaren valt "Flera steg":
@@ -42,7 +42,7 @@ Om användaren valt "Flera steg":
 
 Format:
 Uppgift:
-Pivot-point:
+När:
 Handlingsplan:
 1.
 2.
@@ -55,7 +55,7 @@ Om användaren valt "I ännu fler detaljerade steg":
 
 Format:
 Uppgift:
-Pivot-point:
+När:
 Detaljerad handlingsplan:
 1.
 2.
