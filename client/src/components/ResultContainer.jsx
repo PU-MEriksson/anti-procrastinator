@@ -1,4 +1,4 @@
-// Move this to a ResultPage later
+//Move this to a ResultPage later
 // Add AI-response to the result
 // Add send logic to get the edit response
 // Add loading state
@@ -21,7 +21,7 @@ function ResultContainer({ response, onEdit }) {
   return (
     <main>
       <Result response={response} />
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <TextInput
           id="edit-input"
           label="Är det något du vill ändra?"
@@ -30,7 +30,8 @@ function ResultContainer({ response, onEdit }) {
           placeholder="T.ex städa badrummet"
         />
         <Button type="submit" text="Ändra min handlingsplan" />
-      </form>
+      </form> */}
     </main>
   );
 }
+export default ResultContainer;
