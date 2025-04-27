@@ -10,6 +10,7 @@ function ResultPresenter({ response, onEdit, onBack, isLoading, error }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onEdit(editText);
+    setEditText("");
   };
 
   return (
