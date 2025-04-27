@@ -76,6 +76,43 @@ osv.
   }
 });
 
+// Endpoint for editing the plan
+// This endpoint is used to edit the generated plan based on user feedback
+// It takes the original response and the edit text from the user
+// and generates a new response based on the original plan and the user's request
+app.post("/api/edit-plan", async (req, res) => {
+  const { task, when, moreInfo, detailslevel, originalResponse, editText } =
+    req.body;
+
+  const systemPrompt = `
+Du är en hjälpsam assistent som specialiserat dig på att hjälpa personer med exekutiva svårigheter att bryta ner uppgifter och motverka prokrastinering.
+`;
+  const userDetails = `
+- Uppgift: ${task}
+- När användaren vill börja: ${when || "Ingen tidpunkt angiven"}
+- Övrig information: ${moreInfo || "Ingen ytterligare info."}
+- Önskad detaljnivå på nedbrytningen: ${detailslevel}
+`;
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userDetails },
+        { role: "assistant", content: originalResponse },
+        {
+          role: "user",
+          content: `Användaren begär ändring: ${editText}. Anpassa planen baserat på detta och behåll samma format.`,
+        },
+      ],
+    });
+    res.json({ response: completion.choices[0].message.content });
+  } catch (error) {
+    console.error("Edit-plan error:", error);
+    res.status(500).json({ error: "Fel vid uppdatering av plan." });
+  }
+});
+
 app.listen(3001, () => {
   console.log("Backend körs på port 3001");
 });
