@@ -1,8 +1,40 @@
 import React, { useState } from "react";
+import styled from '@emotion/styled';
 import Result from "./Result";
 import TextInput from "./TextInput";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+
+const MainContainer = styled.main`
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const EditForm = styled.form`
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+`;
+
+const ErrorMessage = styled.p`
+  color: #e53e3e;
+  margin: 1rem 0;
+  font-weight: 500;
+`;
+
+const BackLink = styled(Link)`
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4479D4;
+  text-decoration: none;
+  font-weight: 500;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 function ResultPresenter({ response, onEdit, onBack, isLoading, error }) {
   const [editText, setEditText] = useState("");
@@ -14,10 +46,10 @@ function ResultPresenter({ response, onEdit, onBack, isLoading, error }) {
   };
 
   return (
-    <main>
+    <MainContainer>
       <Result response={response} />
 
-      <form onSubmit={handleSubmit}>
+      <EditForm onSubmit={handleSubmit}>
         <TextInput
           id="edit-input"
           label="Är det något du vill ändra?"
@@ -29,11 +61,11 @@ function ResultPresenter({ response, onEdit, onBack, isLoading, error }) {
         <Button type="submit" disabled={isLoading}>
           {isLoading ? "Uppdaterar..." : "Ändra min handlingsplan"}
         </Button>
-      </form>
+      </EditForm>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
 
-      <Link
+      <BackLink
         to="/"
         onClick={(e) => {
           e.preventDefault();
@@ -41,8 +73,8 @@ function ResultPresenter({ response, onEdit, onBack, isLoading, error }) {
         }}
       >
         Tillbaka till startsidan
-      </Link>
-    </main>
+      </BackLink>
+    </MainContainer>
   );
 }
 export default ResultPresenter;
