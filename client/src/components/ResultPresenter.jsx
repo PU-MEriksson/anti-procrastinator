@@ -1,33 +1,38 @@
-// Add send logic to get the edit response
-// Add loading state
-// Add error handling
-
 import React, { useState } from "react";
 import Result from "./Result";
+import TextInput from "./TextInput";
+import Button from "./Button";
 import { Link } from "react-router-dom";
 
-function ResultPresenter({ response, onEdit, onBack }) {
-  // const [editText, setEditText] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
+function ResultPresenter({ response, onEdit, onBack, isLoading, error }) {
+  const [editText, setEditText] = useState("");
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onEdit(editText);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onEdit(editText);
+    setEditText("");
+  };
+
   return (
     <main>
       <Result response={response} />
-      {/* <form onSubmit={handleSubmit}>
+
+      <form onSubmit={handleSubmit}>
         <TextInput
           id="edit-input"
           label="Är det något du vill ändra?"
-          value="editText"
-          onChange={setEditText}
-          placeholder="T.ex städa badrummet"
+          value={editText}
+          onChange={(val) => setEditText(val)}
+          placeholder="T.ex. Det känns fortfarande svårt att börja."
+          disabled={isLoading}
         />
-        <Button type="submit" text="Ändra min handlingsplan" />
-      </form> */}
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? "Uppdaterar..." : "Ändra min handlingsplan"}
+        </Button>
+      </form>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       <Link
         to="/"
         onClick={(e) => {
