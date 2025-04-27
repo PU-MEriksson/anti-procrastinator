@@ -1,18 +1,22 @@
 import { useState } from 'react';
+import styled from '@emotion/styled';
 import TextInput from './TextInput';
 import RadioGroup from './RadioGroup';
 import Button from './Button';
+
+const FormContainer = styled.div`
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 1.5rem;
+`;
 
 function Form({ onSubmit, isLoading = false}) {
     const [task, setTask] = useState('');
     const [when, setWhen] = useState('');
     const [moreInfo, setMoreInfo] = useState('');
     const [detailslevel, setDetailslevel] = useState('Ett första steg');
-  
-    // const handleChange = (e) => {
-    //   const { name, value } = e.target;
-    //   setFormData(prev => ({ ...prev, [name]: value }));
-    // };
   
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,7 +30,7 @@ function Form({ onSubmit, isLoading = false}) {
       ];
 
   return (
-    <div className="form-container">
+    <FormContainer>
         <form onSubmit={handleSubmit}>
 
             <TextInput
@@ -67,7 +71,7 @@ function Form({ onSubmit, isLoading = false}) {
             </Button>
 
         </form>
-    </div>
+    </FormContainer>
   );
 }
 
