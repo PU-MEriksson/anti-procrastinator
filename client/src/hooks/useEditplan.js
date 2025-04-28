@@ -9,7 +9,7 @@ export default function useEditPlan(initialResponse, formData) {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:3001/api/edit-plan", {
+      const res = await fetch("/api/edit-plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
