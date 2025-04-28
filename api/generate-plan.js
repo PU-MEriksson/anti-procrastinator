@@ -84,7 +84,9 @@ module.exports = async (req, res) => {
     });
     res.status(200).json({ response: completion.choices[0].message.content });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Fel vid generering av plan." });
+    console.error(err); // Log the full error for debugging
+    res
+      .status(500)
+      .json({ error: "Fel vid generering av plan.", details: err.message });
   }
 };
