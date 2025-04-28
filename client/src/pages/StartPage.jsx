@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 import Form from "../components/Form";
 
 const PageContainer = styled.div`
@@ -9,7 +9,7 @@ const PageContainer = styled.div`
 `;
 
 const PageTitle = styled.h1`
-  color: #4479D4;
+  color: #4479d4;
   font-size: 3rem;
   margin-bottom: 0.5rem;
   text-align: center;
@@ -29,7 +29,7 @@ function StartPage() {
   const handleSubmit = async (formData) => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:3001/api/generate-plan", {
+      const res = await fetch("/api/generate-plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
