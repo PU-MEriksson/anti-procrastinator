@@ -78,7 +78,7 @@ app.post("/api/generate-plan", async (req, res) => {
 
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo",
       messages: [
         { role: "system", content: systemPrompt }, // Step 1: Internal thinking
         { role: "user", content: userPrompt }, // Step 2: User-facing generation
@@ -178,7 +178,7 @@ Du är en expert på att hjälpa personer med exekutiva svårigheter. Använd en
 `;
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userDetails },
