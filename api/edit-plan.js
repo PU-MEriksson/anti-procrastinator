@@ -1,7 +1,9 @@
-const OpenAI = require("openai");
-require("dotenv").config();
+import OpenAI from "openai";
+import dotenv from "dotenv";
 
-module.exports = async (req, res) => {
+dotenv.config();
+
+export default async (req, res) => {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Only POST allowed" });
     return;
@@ -20,18 +22,19 @@ Du är en expert på att hjälpa personer med exekutiva svårigheter. Använd en
 - Önskad detaljnivå på nedbrytningen: ${detailslevel}
 `;
 
-  // Call OpenAI API to generate the edited plan
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4-turbo",
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
+        { role: "user", content: userDetails },
       ],
     });
     res.status(200).json({ response: completion.choices[0].message.content });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Fel vid generering av plan." });
+    res
+      .status(500)
+      .json({ error: "Fel vid generering av plan.", details: err.message });
   }
 };

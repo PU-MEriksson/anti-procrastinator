@@ -1,7 +1,9 @@
-const OpenAI = require("openai");
-require("dotenv").config();
+import OpenAI from "openai";
+import dotenv from "dotenv";
 
-module.exports = async (req, res) => {
+dotenv.config();
+
+export default async (req, res) => {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Only POST allowed" });
     return;
@@ -10,7 +12,6 @@ module.exports = async (req, res) => {
   const { task, when, moreInfo, detailslevel } = req.body;
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-  // 1. the "internal thinking" system prompt
   const systemPrompt = `
   Du är en expert på att hjälpa personer med exekutiva svårigheter att komma igång med vardagliga uppgifter.
   
@@ -36,7 +37,6 @@ module.exports = async (req, res) => {
   Målet är att användaren ska känna: "Det här kan jag börja med direkt, utan att känna mig överväldigad."
   `;
 
-  // 2. prepare the user-facing generation prompt
   const userPrompt = `
   Använd följande information från användaren:
   - Uppgift: ${task}
@@ -73,7 +73,6 @@ module.exports = async (req, res) => {
   [Avslutande pepp]
   `;
 
-  // 3. Call OpenAI API to generate the plan
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4-turbo",
@@ -84,7 +83,7 @@ module.exports = async (req, res) => {
     });
     res.status(200).json({ response: completion.choices[0].message.content });
   } catch (err) {
-    console.error(err); // Log the full error for debugging
+    console.error(err);
     res
       .status(500)
       .json({ error: "Fel vid generering av plan.", details: err.message });
