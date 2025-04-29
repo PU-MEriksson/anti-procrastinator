@@ -22,7 +22,6 @@ const Input = styled.input`
   &:focus {
     outline: none;
     border-color: #4479D4;
-    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.1);
   }
 `;
 

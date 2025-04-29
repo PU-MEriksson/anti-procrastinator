@@ -13,7 +13,7 @@ const globalStyles = css`
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.5;
     color: #333;
-    background-color: #f7f9fc;
+    background-color: #ebf0f8;
   }
   
   h1, h2, h3, h4, h5, h6 {
