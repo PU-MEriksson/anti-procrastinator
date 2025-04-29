@@ -1,6 +1,6 @@
 # Momentum - Anti Procrastinator App
 
-![]([client/public/momentum-logo.svg](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTI5em1udW55cW5ubGYyMjI5ajJnMmd0cmkwMW95bHI0NzJma3BuaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/2aZLNmCeHq29G/giphy.gif))
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG9jbmRlOHA2ZTh0NHpkaHF0NDRjZmFjb3Q3MW9zYmdqMTlycGtmeSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ENoMhjnIOiZMs/giphy.gif)
 
 En webbapplikation designad för att hjälpa användaren sluta att prokrastinera genom att bryta ner uppgifter i hanterbara steg.
 
@@ -13,9 +13,9 @@ En webbapplikation designad för att hjälpa användaren sluta att prokrastinera
 
 ## Teknikstack
 
-- **Frontend**: React, Emotion (för styling), React Router
-- **Backend**: Node.js, Express
-- **AI-integration**: OpenAI API för intelligent nedbrytning av uppgifter
+- **Frontend**: React med Emotion (för styling) och React Router
+- **Backend**: Node.js med Express för API-endpoints
+- **AI-integration**: OpenAI API (GPT-4 Turbo) för intelligent nedbrytning av uppgifter
 
 ## Installation
 
@@ -38,10 +38,24 @@ coming soon
 5. Klicka på "Generera plan" för att få din personliga handlingsplan
 6. Använd redigeringsfunktionen om du behöver förfina eller justera planen
 
+## API-struktur
+
+Applikationen använder två huvudsakliga API-endpoints:
+
+- `/api/generate-plan`: Skapar en ny handlingsplan baserad på användarens input.
+- `/api/edit-plan`: Redigerar en befintlig plan baserad på användarfeedback.
+
+## Deployment
+
+Applikationen är konfigurerad för deployment på Vercel. För att deploya:
+
+1. Anslut ditt GitHub-repository till Vercel.
+2. Lägg till din `OPENAI_API_KEY` som en miljövariabel i Vercel-projektinställningarna.
+3. Deploya projektet.
+
 ## Licens
 
 Detta projekt är licensierat under MIT-licensen - se LICENSE-filen för detaljer.
-
 ## Erkännanden
 
 - [OpenAI](https://openai.com/) för AI-backend
