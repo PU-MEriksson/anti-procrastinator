@@ -1,49 +1,49 @@
 # Momentum - Anti Procrastinator App
 
-![]([client/public/momentum-logo.svg](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTI5em1udW55cW5ubGYyMjI5ajJnMmd0cmkwMW95bHI0NzJma3BuaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/2aZLNmCeHq29G/giphy.gif))
+![](<[client/public/momentum-logo.svg](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTI5em1udW55cW5ubGYyMjI5ajJnMmd0cmkwMW85bHI0NzJma3BuaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/2aZLNmCeHq29G/giphy.gif)>)
 
-En webbapplikation designad för att hjälpa användaren sluta att prokrastinera genom att bryta ner uppgifter i hanterbara steg.
+A web application designed to help users stop procrastinating by breaking down tasks into manageable steps.
 
-## Funktioner
+## Features
 
-- Bryt ner uppgifter steg-för-steg 
-- Välj önskad detaljnivå (enstaka steg, flera steg eller omfattande detaljerad nedbrytning)
-- Redigera och förfina din handlingsplan enkelt
-- Rent, intuitivt gränssnitt utan distraherande element
+- Break down tasks step-by-step
+- Choose desired level of detail (single step, multiple steps, or comprehensive detailed breakdown)
+- Edit and refine your action plan easily
+- Clean, intuitive interface without distracting elements
 
-## Teknikstack
+## Tech Stack
 
-- **Frontend**: React, Emotion (för styling), React Router
+- **Frontend**: React, Emotion (for styling), React Router
 - **Backend**: Node.js, Express
-- **AI-integration**: OpenAI API för intelligent nedbrytning av uppgifter
+- **AI Integration**: OpenAI API for intelligent task breakdown
 
 ## Installation
 
-### Förutsättningar
+### Prerequisites
 
-- Node.js (v18 eller senare)
-- npm eller yarn
-- OpenAI API-nyckel
+- Node.js (v18 or later)
+- npm or yarn
+- OpenAI API key
 
-### Konfiguration
+### Configuration
 
 coming soon
 
-## Användning
+## Usage
 
-1. Ange den uppgift du behöver hjälp att komma igång med
-2. Specificera när du vill börja
-3. Lägg till eventuell ytterligare information om utmaningar eller begränsningar
-4. Välj önskad detaljnivå för uppgiftsnedbrytningen
-5. Klicka på "Generera plan" för att få din personliga handlingsplan
-6. Använd redigeringsfunktionen om du behöver förfina eller justera planen
+1. Enter the task you need help getting started with
+2. Specify when you want to begin
+3. Add any additional information about challenges or constraints
+4. Choose the desired level of detail for task breakdown
+5. Click "Generate plan" to get your personalized action plan
+6. Use the editing feature if you need to refine or adjust the plan
 
-## Licens
+## License
 
-Detta projekt är licensierat under MIT-licensen - se LICENSE-filen för detaljer.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Erkännanden
+## Acknowledgments
 
-- [OpenAI](https://openai.com/) för AI-backend
-- [React](https://reactjs.org/) och [Vite](https://vitejs.dev/) för frontend-ramverket
-- [Emotion](https://emotion.sh/) för stylinglösningen
+- [OpenAI](https://openai.com/) for AI backend
+- [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for frontend framework
+- [Emotion](https://emotion.sh/) for styling solution
