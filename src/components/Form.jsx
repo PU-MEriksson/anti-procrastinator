@@ -7,7 +7,6 @@ import Button from './Button';
 const FormContainer = styled.div`
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin-top: 1.5rem;
 `;

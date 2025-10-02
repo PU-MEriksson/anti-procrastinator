@@ -6,7 +6,6 @@ import logoImage from '../assets/momentum-logo.png';
 const HeaderContainer = styled.header`
   background-color: #b2cbf6;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const NavContainer = styled.div`

@@ -13,7 +13,6 @@ const MainContainer = styled.main`
 const EditForm = styled.form`
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin-bottom: 2rem;
 `;
